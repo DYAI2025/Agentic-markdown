@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --color-field: #06080a;
+  --color-field-2: #090c0f;
+  --color-panel: #0d1116;
+  --color-panel-2: #121820;
+  --color-hairline: rgba(255, 255, 255, 0.08);
+  --color-ink: #eef2f6;
+  --color-muted: #8e9aa6;
+  --color-faint: #5d6975;
+  --color-signal: #5fe3b3;
+  --color-signal-deep: #0f3a2e;
+  --color-amber: #f6c453;
+  --color-rose: #ff7d8a;
+  --color-iris: #9db4ff;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+  --radius-tile: 28px;
+}
+
+@layer base {
+  html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  body { background-color: var(--color-field); color: var(--color-ink); font-family: var(--font-sans); font-feature-settings: "ss01", "cv02"; }
+  ::selection { background: rgba(95, 227, 179, 0.28); color: #ffffff; }
+  :focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; border-radius: 12px; }
+  ::-webkit-scrollbar { width: 11px; height: 11px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 999px; border: 3px solid transparent; background-clip: content-box; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); background-clip: content-box; }
+}
+
+.field-bg { position: fixed; inset: 0; pointer-events: none; background: radial-gradient(900px 620px at 12% -8%, rgba(95, 227, 179, 0.13), transparent 62%), radial-gradient(760px 560px at 88% 4%, rgba(157, 180, 255, 0.1), transparent 60%), radial-gradient(1100px 800px at 50% 118%, rgba(246, 196, 83, 0.07), transparent 65%), linear-gradient(180deg, #06080a 0%, #07090c 45%, #050709 100%); }
+.field-grid { position: fixed; inset: 0; pointer-events: none; background-image: linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px); background-size: 68px 68px; mask-image: radial-gradient(circle at 50% 22%, #000 0%, transparent 78%); }
+.bento { position: relative; border-radius: var(--radius-tile); border: 1px solid var(--color-hairline); background: linear-gradient(180deg, rgba(255, 255, 255, 0.045) 0%, rgba(255, 255, 255, 0.012) 42%, rgba(255, 255, 255, 0) 100%), rgba(13, 17, 22, 0.72); box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.055) inset, 0 30px 60px -40px rgba(0, 0, 0, 0.9); backdrop-filter: blur(14px); }
+.bento-tap { transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), border-color 220ms ease, background-color 220ms ease, box-shadow 220ms ease; }
+.bento-tap:hover { transform: translateY(-3px); border-color: rgba(255, 255, 255, 0.16); }
+.bento-tap:active { transform: translateY(0px) scale(0.995); }
+.bento-on { border-color: rgba(95, 227, 179, 0.55) !important; background: linear-gradient(180deg, rgba(95, 227, 179, 0.14) 0%, rgba(95, 227, 179, 0.035) 60%, rgba(255, 255, 255, 0) 100%), rgba(13, 22, 20, 0.85); box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.09) inset, 0 0 0 1px rgba(95, 227, 179, 0.22), 0 34px 70px -44px rgba(95, 227, 179, 0.55); }
+.bento-locked { border-color: rgba(157, 180, 255, 0.4) !important; background: linear-gradient(180deg, rgba(157, 180, 255, 0.12) 0%, rgba(157, 180, 255, 0.03) 60%, rgba(255, 255, 255, 0) 100%), rgba(14, 18, 26, 0.85); }
+.hair { border-color: var(--color-hairline); }
+@keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.rise { animation: rise 520ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+@keyframes sweep { 0% { transform: translateX(-100%); } 100% { transform: translateX(240%); } }
+.sweep::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(95, 227, 179, 0.22), transparent); animation: sweep 1600ms linear infinite; }
+@keyframes pulse-dot { 0%, 100% { opacity: 0.35; transform: scale(0.86); } 50% { opacity: 1; transform: scale(1); } }
+.pulse-dot { animation: pulse-dot 1400ms ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; } .bento-tap:hover { transform: none; } }
+.md-body { font-family: var(--font-mono); font-size: 13.5px; line-height: 1.85; white-space: pre-wrap; word-break: break-word; color: #cfd8e0; }
