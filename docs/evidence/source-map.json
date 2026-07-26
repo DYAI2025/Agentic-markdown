@@ -1,0 +1,56 @@
+[
+  {
+    "source_id": "SRC-REPO-01",
+    "type": "user_provided",
+    "title": "agent-markdown-network-builder (3).zip",
+    "locator": "uploaded ZIP / source tree",
+    "claim_supported": "Current implementation, architecture and limitations",
+    "confidence": 5,
+    "verification_status": "source-inspected"
+  },
+  {
+    "source_id": "SRC-ANTHROPIC-01",
+    "type": "primary",
+    "title": "Claude Code: How Claude remembers your project",
+    "locator": "https://code.claude.com/docs/zh-CN/memory",
+    "claim_supported": "CLAUDE.md loading, @ imports, nested rules and enforcement limits",
+    "confidence": 5,
+    "verification_status": "verified_2026-07-26"
+  },
+  {
+    "source_id": "SRC-OPENAI-01",
+    "type": "primary",
+    "title": "Unrolling the Codex agent loop",
+    "locator": "https://openai.com/index/unrolling-the-codex-agent-loop/",
+    "claim_supported": "AGENTS.md discovery, scope, precedence and size handling",
+    "confidence": 5,
+    "verification_status": "verified_2026-07-26"
+  },
+  {
+    "source_id": "SRC-CURSOR-01",
+    "type": "primary",
+    "title": "Cursor Rules",
+    "locator": "https://docs.cursor.com/context/rules",
+    "claim_supported": ".cursor/rules and MDC rule semantics",
+    "confidence": 5,
+    "verification_status": "verified_2026-07-26"
+  },
+  {
+    "source_id": "SRC-GITHUB-01",
+    "type": "primary",
+    "title": "Adding repository custom instructions for GitHub Copilot",
+    "locator": "https://docs.github.com/en/copilot/how-tos/configure-custom-instructions-in-your-ide/add-repository-instructions-in-your-ide",
+    "claim_supported": ".github/copilot-instructions.md, path instructions, AGENTS.md support boundaries",
+    "confidence": 5,
+    "verification_status": "verified_2026-07-26"
+  },
+  {
+    "source_id": "SRC-WINDSURF-01",
+    "type": "primary",
+    "title": "Windsurf AGENTS.md",
+    "locator": "https://docs.windsurf.com/de/windsurf/cascade/agents-md",
+    "claim_supported": "AGENTS.md auto-scoping and .windsurf/rules engine",
+    "confidence": 5,
+    "verification_status": "verified_2026-07-26"
+  }
+]

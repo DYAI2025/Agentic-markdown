@@ -1,0 +1,272 @@
+[
+  {
+    "feature": "Brief intake UI",
+    "score": 70,
+    "evidence_class": "source-inspected",
+    "target_state": "Structured intake with validated fields, assumptions, and user confirmation.",
+    "current_state": "Six-step browser UI accepts a free-text brief and examples.",
+    "main_gap": "No structured confirmation of extracted requirements; no runtime proof.",
+    "cap_reason": "Source-inspected only."
+  },
+  {
+    "feature": "Target/model selection",
+    "score": 60,
+    "evidence_class": "source-inspected",
+    "target_state": "Versioned capability registry separates runtime, provider, model, and supported adapter semantics.",
+    "current_state": "Hard-coded runtime/provider/model catalogs are selectable.",
+    "main_gap": "Catalog freshness is not verified and selection has no operational provider connection.",
+    "cap_reason": "Source-inspected only; compatibility unverified."
+  },
+  {
+    "feature": "Single-agent manifest",
+    "score": 65,
+    "evidence_class": "source-inspected",
+    "target_state": "Schema-versioned canonical manifest with stable IDs and migrations.",
+    "current_state": "Typed AgentManifest is the central renderer input.",
+    "main_gap": "No runtime schema validation, migrations, or canonical serialization.",
+    "cap_reason": "Source-inspected only."
+  },
+  {
+    "feature": "Requirement extraction",
+    "score": 50,
+    "evidence_class": "source-inspected",
+    "target_state": "Loss-aware extraction that preserves explicit user requirements and requires confirmation for inferred fields.",
+    "current_state": "Keyword and fragment rules infer domain, autonomy, stack, capabilities, and prohibitions.",
+    "main_gap": "User-specific inputs, outputs, success criteria, roles, and workflows are largely replaced by domain presets.",
+    "cap_reason": "Source-inspected only; heuristic false positives expected."
+  },
+  {
+    "feature": "Truth markers",
+    "score": 65,
+    "evidence_class": "source-inspected",
+    "target_state": "Evidence-linked markers propagated into every claim and validation result.",
+    "current_state": "MISSING, ASSUMPTION, SOURCE_NEEDED, UNVERIFIED, BLOCKER are represented and rendered.",
+    "main_gap": "Markers are not tied to claim IDs or source evidence and do not gate release consistently.",
+    "cap_reason": "Source-inspected only."
+  },
+  {
+    "feature": "Agent identity docs",
+    "score": 70,
+    "evidence_class": "source-inspected",
+    "target_state": "Per-agent identity, scope, authority, constraints, and role boundaries.",
+    "current_state": "SOUL.md is generated with purpose, values, capabilities, prohibitions, tone, and escalation.",
+    "main_gap": "Only one agent identity exists; no role inheritance or conflict resolution.",
+    "cap_reason": "Source-inspected only."
+  },
+  {
+    "feature": "Heartbeat/work cadence",
+    "score": 70,
+    "evidence_class": "source-inspected",
+    "target_state": "Executable lifecycle contract with preconditions, checkpoints, completion and abort gates.",
+    "current_state": "HEARTBEAT.md provides before/during/after checks and abort conditions.",
+    "main_gap": "Advisory Markdown only; no machine-enforced state transitions.",
+    "cap_reason": "Source-inspected only."
+  },
+  {
+    "feature": "Tool and guardrail docs",
+    "score": 60,
+    "evidence_class": "source-inspected",
+    "target_state": "Machine-readable tool contracts mapped to runtime permissions, hooks, and approval policies.",
+    "current_state": "TOOLS.md and GUARDRAILS.md are rendered from ToolSpec and prohibitions.",
+    "main_gap": "Permissions are descriptive only and are not compiled into runtime enforcement configs.",
+    "cap_reason": "Source-inspected only."
+  },
+  {
+    "feature": "Deterministic rendering",
+    "score": 45,
+    "evidence_class": "source-inspected",
+    "target_state": "Canonical input plus injected build metadata yields byte-for-byte reproducible core artifacts.",
+    "current_state": "Pure render functions generate files from a manifest.",
+    "main_gap": "new Date() timestamps and ZIP timestamps make same-input outputs differ; the UI claim is too strong.",
+    "cap_reason": "Known target-semantic violation."
+  },
+  {
+    "feature": "Blueprint selection",
+    "score": 65,
+    "evidence_class": "source-inspected",
+    "target_state": "Dependency-aware package planner with required/optional modules and transparent consequences.",
+    "current_state": "Blueprints are proposed, locked, selectable, and re-rendered after changes.",
+    "main_gap": "Dependency model is handwritten and not derived from actual Markdown AST or adapter contract.",
+    "cap_reason": "Source-inspected only."
+  },
+  {
+    "feature": "Runtime adapters",
+    "score": 35,
+    "evidence_class": "source-inspected",
+    "target_state": "Officially sourced, versioned adapters with fixture tests for each client and clear parity limits.",
+    "current_state": "Adapters exist for Claude Code, Codex, Cursor, Copilot, Windsurf, and portable Markdown.",
+    "main_gap": "Windsurf path is not aligned with current documented mechanisms; Claude imports are rendered as literal backticked paths rather than @ imports; nested scopes are absent.",
+    "cap_reason": "Current compatibility contradicted or incomplete."
+  },
+  {
+    "feature": "Cross-file validation",
+    "score": 40,
+    "evidence_class": "source-inspected",
+    "target_state": "Parse rendered Markdown, resolve actual links/imports, detect cycles, missing targets, and adapter-invalid references.",
+    "current_state": "Checks compare blueprint reference arrays against selected paths.",
+    "main_gap": "Reference metadata diverges from rendered content, creating false negatives and false positives.",
+    "cap_reason": "Known validation design defect."
+  },
+  {
+    "feature": "Semantic validation",
+    "score": 45,
+    "evidence_class": "source-inspected",
+    "target_state": "Explicit rule engine plus optional model-based review, both evidence-labeled and independently testable.",
+    "current_state": "Heuristic checks detect autonomy, tools, privacy, success criteria, escalation, and thin briefs.",
+    "main_gap": "Called semantic but implemented as deterministic regex/manifest checks; no semantic model or corpus eval.",
+    "cap_reason": "Source-inspected only; naming overstates capability."
+  },
+  {
+    "feature": "Repair workflow",
+    "score": 55,
+    "evidence_class": "source-inspected",
+    "target_state": "Every finding has reversible patch, diff preview, audit trail, revalidation, and rollback.",
+    "current_state": "Selected findings can mutate the manifest or add a file and trigger full re-render.",
+    "main_gap": "No diff preview, rollback, persisted audit trail, or comprehensive repair coverage.",
+    "cap_reason": "Source-inspected only."
+  },
+  {
+    "feature": "Release gate and score",
+    "score": 30,
+    "evidence_class": "source-inspected",
+    "target_state": "Fail-closed release decision based on schema, tests, adapter compatibility, unresolved blockers, and eval thresholds.",
+    "current_state": "A simple 100-minus-penalties score and textual blockers are shown.",
+    "main_gap": "UNVERIFIED runtime behavior and notes can still coexist with a 100 score and downloadable package.",
+    "cap_reason": "Release semantics are not production-safe."
+  },
+  {
+    "feature": "ZIP package export",
+    "score": 60,
+    "evidence_class": "source-inspected",
+    "target_state": "Tested archive export with checksums, manifest, path safety, size limits, and round-trip verification.",
+    "current_state": "Dependency-free ZIP STORE writer preserves nested paths in the full archive.",
+    "main_gap": "No automated archive round-trip, checksum manifest, ZIP64/limit handling, or corruption test.",
+    "cap_reason": "Source-inspected only."
+  },
+  {
+    "feature": "Individual file download",
+    "score": 40,
+    "evidence_class": "source-inspected",
+    "target_state": "Download preserves required directory paths or clearly instructs placement.",
+    "current_state": "Each rendered file can be downloaded separately.",
+    "main_gap": "saveText strips directory components, so .cursor and .github files lose their installation path.",
+    "cap_reason": "Known user-visible compatibility break."
+  },
+  {
+    "feature": "Local privacy/offline",
+    "score": 65,
+    "evidence_class": "source-inspected",
+    "target_state": "Local-first operation with explicit data-flow proof, CSP, no telemetry by default, and privacy tests.",
+    "current_state": "No fetch, WebSocket, local storage, or backend calls were found in source; generation is browser-local.",
+    "main_gap": "No runtime network inspection, CSP, privacy test, or dependency supply-chain proof.",
+    "cap_reason": "Source-inspected only."
+  },
+  {
+    "feature": "Multi-agent network model",
+    "score": 5,
+    "evidence_class": "source-inspected",
+    "target_state": "Graph of agent nodes, roles, authority, dependencies, shared policies, and routing rules.",
+    "current_state": "Product name says network, but the canonical model contains one AgentManifest only.",
+    "main_gap": "Core target capability is absent.",
+    "cap_reason": "Only naming and single-agent files exist."
+  },
+  {
+    "feature": "Task decomposition/assignment",
+    "score": 5,
+    "evidence_class": "source-inspected",
+    "target_state": "Task schema with owner agent, inputs, outputs, dependencies, acceptance criteria, and status transitions.",
+    "current_state": "No task entity or assignment model exists.",
+    "main_gap": "Core target capability is absent.",
+    "cap_reason": "No implementation evidence."
+  },
+  {
+    "feature": "Handoff protocol",
+    "score": 10,
+    "evidence_class": "source-inspected",
+    "target_state": "Typed handoff contracts, context package limits, responsibility transfer, and failure escalation.",
+    "current_state": "Generic escalation text exists.",
+    "main_gap": "No inter-agent handoff entity, routing, or contract.",
+    "cap_reason": "Only conceptual overlap."
+  },
+  {
+    "feature": "Schema validation/migrations",
+    "score": 5,
+    "evidence_class": "source-inspected",
+    "target_state": "JSON Schema or equivalent runtime validation, schema versioning, migrations, and invalid-input diagnostics.",
+    "current_state": "TypeScript interfaces exist and documentation calls extraction schema-validated.",
+    "main_gap": "No schema file or runtime validation call exists.",
+    "cap_reason": "Claim not supported by implementation."
+  },
+  {
+    "feature": "Executable eval harness",
+    "score": 10,
+    "evidence_class": "source-inspected",
+    "target_state": "Fixtures and automated assertions for extraction, rendering, adapters, safety, and model-behavior evals.",
+    "current_state": "EVALUATION.md contains manual cases with UNVERIFIED status.",
+    "main_gap": "No test runner, fixtures, thresholds, or result persistence.",
+    "cap_reason": "Documentation only."
+  },
+  {
+    "feature": "Prompt-injection safety",
+    "score": 25,
+    "evidence_class": "source-inspected",
+    "target_state": "Untrusted brief isolation, Markdown/fence escaping, instruction provenance, and policy conflict detection.",
+    "current_state": "General prohibitions and uncertainty markers are generated.",
+    "main_gap": "User text can cross formatting/instruction boundaries; no sanitizer, AST, or injection tests.",
+    "cap_reason": "Only generic safeguards."
+  },
+  {
+    "feature": "Persistence/version/diff",
+    "score": 5,
+    "evidence_class": "source-inspected",
+    "target_state": "Local projects, autosave, import, version history, manifest diff, rollback, and deterministic rebuild.",
+    "current_state": "React state is session-only; exports can be downloaded.",
+    "main_gap": "No persistence or round-trip import.",
+    "cap_reason": "Export is the only related capability."
+  },
+  {
+    "feature": "Automated tests and CI",
+    "score": 0,
+    "evidence_class": "source-inspected",
+    "target_state": "Unit, property, integration, archive round-trip, adapter fixtures, E2E, accessibility, and CI release gates.",
+    "current_state": "No test files, test script, lint script, typecheck script, or CI configuration were found.",
+    "main_gap": "Entire quality automation layer is absent.",
+    "cap_reason": "No implementation evidence."
+  },
+  {
+    "feature": "Compatibility registry",
+    "score": 10,
+    "evidence_class": "source-inspected",
+    "target_state": "Each adapter stores official source, verified date, supported semantics, limits, and deprecation state.",
+    "current_state": "Runtime behavior and model names are hard-coded in catalog.ts.",
+    "main_gap": "No provenance, freshness date, compatibility test, or update workflow.",
+    "cap_reason": "Static catalog only."
+  },
+  {
+    "feature": "Production observability",
+    "score": 0,
+    "evidence_class": "source-inspected",
+    "target_state": "Client error reporting with opt-in telemetry, release diagnostics, support bundle, and privacy controls.",
+    "current_state": "No observability or support diagnostics exist.",
+    "main_gap": "Absent.",
+    "cap_reason": "No implementation evidence."
+  },
+  {
+    "feature": "Project documentation",
+    "score": 70,
+    "evidence_class": "source-inspected",
+    "target_state": "README, architecture decisions, contracts, limits, runbook, contribution and release documentation.",
+    "current_state": "A focused feature-slice document explains pipeline, layers, markers, limitations, and extension points.",
+    "main_gap": "No root README, ADRs, deployment/runbook, or compatibility source map.",
+    "cap_reason": "Source-inspected only."
+  },
+  {
+    "feature": "Accessibility/responsive UI",
+    "score": 50,
+    "evidence_class": "source-inspected",
+    "target_state": "WCAG-oriented keyboard, screen-reader, responsive, reduced-motion, and automated accessibility proof.",
+    "current_state": "Labels, buttons, aria attributes, responsive classes, and reduced-motion timing branch are visible in source.",
+    "main_gap": "No browser/E2E or accessibility audit; timed progress remains misleading.",
+    "cap_reason": "Source-inspected only; UI not run."
+  }
+]

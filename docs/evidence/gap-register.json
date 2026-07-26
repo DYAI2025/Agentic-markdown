@@ -1,0 +1,200 @@
+[
+  {
+    "id": "GAP-001",
+    "priority": "P0",
+    "gap": "Reproducibility contract is false",
+    "evidence": "Timestamps are created inside extraction, reports and ZIP metadata.",
+    "consequence": "Same canonical input cannot be rebuilt byte-for-byte; diffs and provenance become noisy.",
+    "remediation": "Inject a clock/build metadata object, canonicalize serialization, and add reproducibility tests.",
+    "task": "PRR-003"
+  },
+  {
+    "id": "GAP-002",
+    "priority": "P0",
+    "gap": "No runtime schema validation",
+    "evidence": "Documentation says schema-validated, but only TypeScript interfaces exist.",
+    "consequence": "Invalid or migrated manifests can silently reach renderers.",
+    "remediation": "Add JSON Schemas, runtime validation, schema versions and migrations.",
+    "task": "PRR-002"
+  },
+  {
+    "id": "GAP-003",
+    "priority": "P0",
+    "gap": "No multi-agent network model",
+    "evidence": "The core type is one AgentManifest.",
+    "consequence": "The app cannot characterize multiple agents, assign responsibilities or express dependencies.",
+    "remediation": "Introduce NetworkManifest, AgentNode and graph validation.",
+    "task": "PRR-004"
+  },
+  {
+    "id": "GAP-004",
+    "priority": "P0",
+    "gap": "No task and handoff graph",
+    "evidence": "No TaskNode or HandoffContract exists.",
+    "consequence": "Task distribution and agent coordination are absent.",
+    "remediation": "Add task decomposition, ownership, dependencies, handoffs and cycle checks.",
+    "task": "PRR-005"
+  },
+  {
+    "id": "GAP-005",
+    "priority": "P0",
+    "gap": "Runtime adapters are not source-bound",
+    "evidence": "Adapters are hard-coded and not versioned; Claude imports are literal; Windsurf path is stale relative to current docs.",
+    "consequence": "Generated files can look plausible but not load as intended.",
+    "remediation": "Create versioned adapter registry, official-source metadata and fixture tests.",
+    "task": "PRR-006"
+  },
+  {
+    "id": "GAP-006",
+    "priority": "P0",
+    "gap": "Actual import semantics are missing",
+    "evidence": "Runtime files list paths in backticks rather than using client-specific inclusion syntax.",
+    "consequence": "Secondary rules may never enter model context.",
+    "remediation": "Compile client-specific imports/inlining and verify with fixtures.",
+    "task": "PRR-007"
+  },
+  {
+    "id": "GAP-007",
+    "priority": "P0",
+    "gap": "Link validation is unsound",
+    "evidence": "Checks use blueprint references instead of parsed rendered content; metadata omits some rendered references.",
+    "consequence": "Missing links can pass and harmless omissions can fail.",
+    "remediation": "Parse Markdown/frontmatter and validate actual links/imports.",
+    "task": "PRR-008"
+  },
+  {
+    "id": "GAP-008",
+    "priority": "P0",
+    "gap": "No prompt/Markdown boundary protection",
+    "evidence": "User-derived text is inserted into Markdown and a fenced system-prompt block without robust escaping.",
+    "consequence": "Malformed files or instruction-boundary injection are possible.",
+    "remediation": "Add untrusted-field encoding, fence escaping, AST render and adversarial fixtures.",
+    "task": "PRR-009"
+  },
+  {
+    "id": "GAP-009",
+    "priority": "P0",
+    "gap": "No automated tests or CI",
+    "evidence": "No tests, test script, lint, typecheck script or workflow exists.",
+    "consequence": "Core correctness and regressions are unproven.",
+    "remediation": "Add unit, property, integration, ZIP round-trip, adapter and E2E tests plus CI.",
+    "task": "PRR-010"
+  },
+  {
+    "id": "GAP-010",
+    "priority": "P0",
+    "gap": "Release gate does not fail closed",
+    "evidence": "A penalty score can be high while runtime behavior remains UNVERIFIED; download remains available.",
+    "consequence": "Users can mistake internal consistency for production readiness.",
+    "remediation": "Separate quality score from release decision and block artifacts on mandatory gate failures.",
+    "task": "PRR-012"
+  },
+  {
+    "id": "GAP-011",
+    "priority": "P1",
+    "gap": "Build progress is simulated",
+    "evidence": "Stage labels advance by timers; compilation occurs once at the end.",
+    "consequence": "UI communicates work that has not yet happened.",
+    "remediation": "Use real synchronous stage events or remove artificial processing claims.",
+    "task": "PRR-013"
+  },
+  {
+    "id": "GAP-012",
+    "priority": "P1",
+    "gap": "Explicit user requirements are lost",
+    "evidence": "Inputs, outputs, quality bars and workflows mostly come from domain templates.",
+    "consequence": "Generated agents may not match the user's stated acceptance criteria.",
+    "remediation": "Add structured extracted fields, provenance pointers and confirmation/edit step.",
+    "task": "PRR-001"
+  },
+  {
+    "id": "GAP-013",
+    "priority": "P1",
+    "gap": "Individual downloads lose nested paths",
+    "evidence": "saveText keeps only the basename.",
+    "consequence": "Cursor/Copilot/Windsurf files can be installed in the wrong location.",
+    "remediation": "Download folder-preserving bundles or display exact placement instructions.",
+    "task": "PRR-015"
+  },
+  {
+    "id": "GAP-014",
+    "priority": "P1",
+    "gap": "No persistence, import, diff or rollback",
+    "evidence": "State exists only in the current React session.",
+    "consequence": "Projects cannot be sustainably maintained or regenerated.",
+    "remediation": "Add IndexedDB workspace storage, manifest import/export, version history and diffs.",
+    "task": "PRR-014"
+  },
+  {
+    "id": "GAP-015",
+    "priority": "P1",
+    "gap": "Evaluation is documentation-only",
+    "evidence": "EVALUATION.md contains manual UNVERIFIED cases.",
+    "consequence": "There is no repeatable acceptance evidence.",
+    "remediation": "Add executable fixture runner and stored results.",
+    "task": "PRR-016"
+  },
+  {
+    "id": "GAP-016",
+    "priority": "P1",
+    "gap": "Guardrails are not compiled to enforcement",
+    "evidence": "Tool permissions remain prose.",
+    "consequence": "The runtime may ignore constraints.",
+    "remediation": "Generate supported permission/hook configs and mark unsupported enforcement explicitly.",
+    "task": "PRR-017"
+  },
+  {
+    "id": "GAP-017",
+    "priority": "P1",
+    "gap": "Hard-coded model/runtime catalog drifts",
+    "evidence": "No verified date or source map is stored.",
+    "consequence": "Compatibility and model availability age silently.",
+    "remediation": "Move catalog to data with source, verified date, capability flags and deprecation policy.",
+    "task": "PRR-018"
+  },
+  {
+    "id": "GAP-018",
+    "priority": "P1",
+    "gap": "No supply-chain or release metadata",
+    "evidence": "No SBOM, license scan, secret scan, checksums or signed release process.",
+    "consequence": "Production distribution lacks integrity and dependency evidence.",
+    "remediation": "Add release scripts, SBOM/license/secret checks and checksum manifest.",
+    "task": "PRR-020"
+  },
+  {
+    "id": "GAP-019",
+    "priority": "P1",
+    "gap": "Accessibility and UI behavior unverified",
+    "evidence": "Source has useful accessibility elements but no browser/E2E evidence.",
+    "consequence": "Keyboard, screen-reader and responsive defects may remain.",
+    "remediation": "Add Playwright flows and automated accessibility checks.",
+    "task": "PRR-019"
+  },
+  {
+    "id": "GAP-020",
+    "priority": "P2",
+    "gap": "No compatibility update workflow",
+    "evidence": "Current official documentation can change without detection.",
+    "consequence": "Adapters can regress after vendor changes.",
+    "remediation": "Add scheduled source review and compatibility contract tests.",
+    "task": "PRR-018"
+  },
+  {
+    "id": "GAP-021",
+    "priority": "P2",
+    "gap": "No optional provider-backed extractor",
+    "evidence": "Provider/model selection is metadata only.",
+    "consequence": "Complex briefs cannot be semantically normalized beyond regex heuristics.",
+    "remediation": "Add an optional, sandboxed extractor interface while keeping deterministic core and manual fallback.",
+    "task": "PRR-022"
+  },
+  {
+    "id": "GAP-022",
+    "priority": "P2",
+    "gap": "No operational documentation",
+    "evidence": "No root README, deployment guide, ADRs, support bundle or release runbook.",
+    "consequence": "Maintenance and handoff are fragile.",
+    "remediation": "Create production documentation and architecture decision records.",
+    "task": "PRR-021"
+  }
+]
