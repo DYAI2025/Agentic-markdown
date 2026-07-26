@@ -1,0 +1,33 @@
+name: Clean generated artifacts
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/cleanup.yml
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove generated and dependency artifacts
+        run: |
+          rm -rf node_modules dist
+          cat > .gitignore <<'EOF'
+          node_modules/
+          dist/
+          .DS_Store
+          *.log
+          EOF
+          rm .github/workflows/cleanup.yml
+          rmdir .github/workflows 2>/dev/null || true
+          rmdir .github 2>/dev/null || true
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore: remove generated artifacts and add gitignore"
+          git push origin main
